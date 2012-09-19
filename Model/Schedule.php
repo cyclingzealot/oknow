@@ -29,6 +29,9 @@ class Model_Schedule {
 		return $this->_stops;
 	}
 	
+	public function getStopNumber() {return $this->_stopNumber;}
+	public function getRoute() {return $this->_route;}
+	
 	
 	public function nextThreeStops() {
 		$returnArray;
@@ -38,7 +41,7 @@ class Model_Schedule {
 		}
 		
 		foreach($this->_stops as $stop) {
-			$returnArray[] = $stop ->getNextTime() . ' ';
+			$returnArray[] = $stop ->getNextTime();
 		}
 		
 		return $returnArray;

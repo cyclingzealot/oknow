@@ -32,14 +32,7 @@ class Model_StopData {
 	public function getData() {return $this->_data;}
 	
 	public function getNextTime() {
-		$returnStr = $this->_data['adjTime']->__toString();
-		
-		// Add asterisks to signify ajusted to GPS data
-		if(! $this->_data['adjAge'] < 0) {
-			$returnStr .= '*';
-		}
-		
-		return $returnStr;
+		return trim($this->_data['adjTime']->__toString());
 	}
 }
 

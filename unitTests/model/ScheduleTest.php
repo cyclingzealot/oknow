@@ -19,19 +19,20 @@ class Model_ScheduleTest extends PHPUnit_Framework_TestCase {
 	
 	public function testGetKanataStop() {
 		$kStop = new Model_Schedule(6650, 85);
-		$stops = $this->_object->nextThreeStops();
+		$stops = $kStop->nextThreeStops();
 		
 		//Just see if we got here
 		$this->assertTrue(is_array($stops), "Did not get an array back");
 		
-		$this->assertTrue(count($stops) > 0, "This test is invalid if there are no stops returned");
-		
-		$stops = $this->_object->getStops();
+		$this->assertTrue(count($stops) == 3, "There must be 3 stops obtained");
 
-		$return = $this->_object->nextStopsToString();
-		
-		$this->assertTrue(is_string($return));
-		
+		$last = -100;
+		foreach($stops as $inMinutes) {
+			$this->assertTrue(is_numeric($inMinutes), 
+				sprintf("Stop not in minutes, its %s", var_export($inMinutes, TRUE)));
+			$this->assertTrue($inMinutes > $last);
+			$last = $inMinutes;
+		}
 		#echo $return ;
 		
 	}
