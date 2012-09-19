@@ -17,9 +17,11 @@ class Model_Schedule {
 	protected $_interface;
 	protected $_stops;	
 	
-	public function __construct() {
+	public function __construct($stopNumber, $route) {
 		$this->_interface = new Model_OCTranspoInterface();
 		$this->_stops = array();
+		$this->_route = $route;
+		$this->_stopNumber = $stopNumber;
 	}
 	
 	
@@ -28,11 +30,25 @@ class Model_Schedule {
 	}
 	
 	
-	public function getNextStops($stop, $route) {
-		$result = $this->_interface->getNextStops($stop, $route);
+	public function nextThreeStops() {
+		$returnArray;
 		
-		$this->_stopNumber = $stop;
-		$this->_route = $route;
+		if(empty($this->_stops)) {
+			$this->getNextStops();
+		}
+		
+		foreach($this->_stops as $stop) {
+			$returnArray[] = $stop ->getNextTime() . ' ';
+		}
+		
+		return $returnArray;
+		
+	}
+	
+	
+	public function getNextStops() {
+		$result = $this->_interface->getNextStops($this->_stopNumber, $this->_route);
+		
 		
 		if (preg_match("/<div/",$result)) {
 			throw new Exception("API error at OCTranspo");
@@ -63,7 +79,7 @@ class Model_Schedule {
 			}
 
 			$this->_stops[] = new Model_StopData($this->_stopNumber, $this->_route, $dataArray);
-			
+					
 		}
 		
 	}

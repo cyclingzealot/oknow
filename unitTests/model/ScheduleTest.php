@@ -7,11 +7,9 @@
  *
  */
 class Model_ScheduleTest extends PHPUnit_Framework_TestCase {
-	
-	protected $_object;
-	
+		
 	public function setup() {
-		$this->_object = new Model_Schedule();
+		parent::setup();
 	}
 	
 	public function testDummy() {
@@ -19,17 +17,9 @@ class Model_ScheduleTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	
-	public function testInterface() {
-		$i = new Model_OCTranspoInterface();
-		
-		$result = $i->getNextStops(6650, 85);
-		
-		$this->assertTrue(is_string($result));
-	}
-	
-	
 	public function testGetKanataStop() {
-		$stops = $this->_object->getNextStops(6650, 85);
+		$kStop = new Model_Schedule(6650, 85);
+		$stops = $this->_object->nextThreeStops();
 		
 		//Just see if we got here
 		$this->assertTrue(is_array($stops), "Did not get an array back");
