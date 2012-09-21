@@ -1,6 +1,12 @@
 <?php
 
 
+/**
+ * Parses command line arguments and builds the Model_Schedule
+ * This is only used for command line calls
+ * 
+ * @author Julien Lamarche
+ */
 class Controller_OCTranspoCLI {
 	
 	protected $_stop;

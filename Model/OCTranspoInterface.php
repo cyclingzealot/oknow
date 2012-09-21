@@ -1,7 +1,14 @@
 <?php
 
 
-
+/**
+ * Interfaces with OCTranspo Rest servers
+ * and caches the data.
+ * 
+ * @author Julien Lamarche, jlam@credil.org
+ * @author Kevin O'Donnel, https://github.com/kevinodotnet
+ *
+ */
 class Model_OCTranspoInterface {
 	
 
@@ -49,3 +56,4 @@ class Model_OCTranspoInterface {
 		}
 	}
 }
+
