@@ -31,8 +31,12 @@ class Model_StopData {
 	
 	public function getData() {return $this->_data;}
 	
-	public function getNextTime() {
+	public function getETA() {
 		return trim($this->_data['adjTime']->__toString());
+	}
+	
+	public function getDestination() {
+		return trim($this->_data['dest']->__toString());
 	}
 }
 

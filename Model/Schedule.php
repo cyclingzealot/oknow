@@ -26,6 +26,10 @@ class Model_Schedule {
 	
 	
 	public function getStops() {
+		if(empty($this->_stops)) {
+			$this->getNextStops();
+		}
+		
 		return $this->_stops;
 	}
 	
@@ -41,7 +45,7 @@ class Model_Schedule {
 		}
 		
 		foreach($this->_stops as $stop) {
-			$returnArray[] = $stop ->getNextTime();
+			$returnArray[] = $stop ->getETA();
 		}
 		
 		return $returnArray;
@@ -92,7 +96,7 @@ class Model_Schedule {
 		$returnStr = '';
 
 		foreach($this->_stops as $stop) {
-			$returnStr .= $stop ->getNextTime() . ' ';
+			$returnStr .= $stop ->getETA() . ' ';
 		}
 		
 		return $returnStr;

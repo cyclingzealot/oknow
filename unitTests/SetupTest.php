@@ -15,6 +15,7 @@ class SetupTest extends PHPUnit_Framework_TestCase {
 		);
 		
 		$this->assertTrue(function_exists('curl_init'), "curl_init does not exist.  Make sure PHP curl is installed.");
+		
 	}
 	
 }
