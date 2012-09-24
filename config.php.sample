@@ -1,0 +1,10 @@
+<?php
+
+define("APP_ID",  'HELLO');
+define("API_KEY",  'SOME KEY HERE');
+define("CACHE_DIR",  '/tmp/oknow/');
+define("REFRESH_TIME", 10);
+define("DEBUG_LOG", '/tmp/oknow.log');
+define("DISPLAY_CONFIG", array(
+	array(6648, 6650), array(4987)
+));
